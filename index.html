@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Astroフレームワーク Paperダッシュボード</title>
+<style>
+:root{--bg:#07111f;--panel:#111c2d;--border:#24344c;--text:#e5edf8;--muted:#94a3b8;--green:#22c55e;--yellow:#facc15;--red:#ef4444}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,"Noto Sans JP",sans-serif;line-height:1.65}
+main{max-width:1180px;margin:auto;padding:20px} section,.header{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px;margin:16px 0}
+h1,h2,h3{margin-top:0} h2{border-bottom:1px solid var(--border);padding-bottom:10px} .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.card{background:#0b1626;border:1px solid var(--border);border-radius:12px;padding:14px} .traffic{display:flex;gap:10px;align-items:center} .traffic .icon{font-size:3.2rem} .signal-title{font-size:1.5rem;font-weight:800}
+.signal-badge{display:inline-flex;gap:8px;align-items:center;padding:8px 14px;border-radius:999px;font-weight:800;border:1px solid transparent} .badge-green{color:#4ade80;background:#123923;border-color:#1d8f4e} .badge-yellow{color:#fde047;background:#3a3311;border-color:#8f791d} .badge-red{color:#fb7185;background:#40161c;border-color:#a62b3d}
+.fw-tag,.deviation{display:inline-block;border:1px solid #64748b;border-radius:999px;padding:1px 8px;font-size:.75rem;color:#cbd5e1;cursor:help} .source{font-size:.75rem;color:#8ea2bd}
+.deviation{border-color:#f59e0b;color:#fbbf24} .muted{color:var(--muted)} .notice{border-left:5px solid var(--yellow);background:#302a0c;padding:12px}
+.disclaimer{color:#fecaca;background:#3b1017;border:1px solid #7f1d1d;padding:10px;border-radius:9px;font-weight:700}
+table{width:100%;border-collapse:collapse} th,td{padding:10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top} th{width:35%}
+.timeline{border-left:4px solid #475569;background:#0b1626;padding:12px 16px;margin:10px 0;border-radius:0 10px 10px 0} .position{border-left-color:var(--green)}
+.chart{width:100%;height:auto;background:#081323;border-radius:10px} a{color:#7dd3fc} code{color:#fde68a} @media(max-width:600px){main{padding:10px}}
+</style></head><body><main>
+<header class="header"><h1>Astroフレームワーク Paperダッシュボード</h1><p class="disclaimer">⚠ Paper取引専用です。実売買は行いません。</p><p>最終更新（JST）: 2026-07-10T15:33:30+09:00 / 60秒ごとに自動更新（判定サイクルは15分ごと）</p><p class="muted">このページは静的スナップショットです。約15分ごとに更新されます。</p></header>
+<section><h2>① 今どうなっているか</h2><div class="grid">
+<div class="card"><div class="traffic"><span class="signal-badge badge-yellow"><span class="icon">🟡</span>監視中</span></div><p>条件が揃うまで監視し、新規Paper注文を作成しません。</p></div>
+<div class="card"><h3>現在値</h3><strong>63,922.60</strong></div>
+<div class="card"><h3>初期残高</h3><strong>10,000.00 USDT</strong></div>
+<div class="card"><h3>口座残高</h3><strong>10,000.00 USDT</strong></div>
+<div class="card"><h3>口座資産</h3><strong>10,000.00 USDT</strong></div>
+<div class="card"><h3>実現PnL</h3><strong>0.00 USDT</strong></div>
+<div class="card"><h3>未実現PnL</h3><strong>0.00 USDT</strong></div>
+<div class="card"><h3>累計PnL</h3><strong>0.00 USDT</strong><p>手数料・資金調達込み</p></div>
+<div class="card"><h3>勝率</h3><strong>0.0%</strong><p>0勝 / 0回</p></div>
+<div class="card"><h3>総手数料</h3><strong>0.00 USDT</strong></div>
+<div class="card"><h3>資金調達損益</h3><strong>0.00 USDT</strong></div>
+<div class="card"><h3>レバレッジ</h3><strong>20倍</strong> <span class="fw-tag" title="20倍はFW定義ではなくPaper検証用の仮定です">FW記載なし</span><p class="deviation">FW逸脱・ユーザー指定</p></div></div></section>
+<section><h2>② なぜそう判断したか</h2><div class="grid"><div class="card"><h3>プラス要因</h3><ul><li>最終判定は上方向です</li><li>上方向に重要価格帯が3個重なっています</li><li>方向の判定を通過しています</li><li>無効化条件の判定を通過しています</li><li>利確目標の判定を通過しています</li><li>時間軸の判定を通過しています</li></ul></div><div class="card"><h3>マイナス要因</h3><ul><li>反転・継続シグナルが未確認か想定方向と一致していません</li><li>重要な運用入力が不足しています</li><li>現在値が計画したエントリー候補帯へ到達していません</li><li>エントリーの判定は未完了ですが監視を継続できます</li><li>価格分布の文脈の判定は未完了ですが監視を継続できます</li></ul></div></div>
+<h3>売買計画</h3><table><tr><th>実行許可 <span class="fw-tag" title="FWのstage判定とguardrailに基づく実行可否です">FW記載済み · Ch6</span></th><td>様子見</td></tr>
+<tr><th>状態 <span class="fw-tag" title="FWの定義そのもの">FW記載済み · Ch6</span></th><td>待機</td></tr>
+<tr><th>方向 <span class="fw-tag" title="FWのdirection stageで扱う方向判断です">FW記載済み · Ch6</span></th><td>ロング</td></tr>
+<tr><th>根拠強度 <span class="fw-tag" title="FWのentry stageで扱う価格帯の重なり強度です">FW記載済み · Ch6</span></th><td>中程度</td></tr>
+<tr><th>エントリー候補帯 <span class="fw-tag" title="FWで手動値を優先するエントリー候補帯です">FW記載済み · Ch6</span></th><td>63,115.87 ～ 63,191.70</td></tr>
+<tr><th>損切り <span class="fw-tag" title="FWのinvalidationを価格へ反映した損切り水準です">FW記載済み · Ch7</span></th><td>62,638.07</td></tr>
+<tr><th>利確 <span class="fw-tag" title="FWのtargetingをPaper決済脚へ変換した推測値です">FWから推測 · Ch7</span></th><td>第1利確 63,626.06 / 第2利確 63,975.97 / 最終利確 64,494.79</td></tr></table>
+<h3>使っている値</h3><table><tr><th>方向 <span class="fw-tag" title="オペレーターが入力するFW方向判断です">FWから推測 · Ch5 bias（自動pre-biasは補助近似）</span></th><td>ロング<br><span class='source'>出所: 手入力</span></td></tr><tr><th>時間軸 <span class="fw-tag" title="FWの日中 / 週内の時間軸です">FW記載済み · Ch11 intraday / intraweek</span></th><td>日中<br><span class='source'>出所: 手入力</span></td></tr><tr><th>上側マグネット <span class="fw-tag" title="FWがtargetingに使う上側・下側の価格目標です">FWから推測 · Ch5.2〜5.3（VP系はkline近似）</span></th><td>[&quot;tp1@63626.0625:medium&quot;, &quot;tp_final@64494.7875:strong&quot;]<br><span class='source'>出所: 手入力</span></td></tr><tr><th>下側マグネット <span class="fw-tag" title="FWがtargetingに使う上側・下側の価格目標です">FWから推測 · Ch5.2〜5.3（VP系はkline近似）</span></th><td>[&quot;stop_loss@62638.0712:strong&quot;, &quot;entry_low@63115.87:medium&quot;]<br><span class='source'>出所: 手入力</span></td></tr><tr><th>コンフルエンス <span class="fw-tag" title="複数の重要価格帯の近さはFWに記載されていますが、0.3%以内で束ねる処理は独自解釈です">FW記載なし · Ch5.6（近さのみ記載、クラスタリングは独自）</span></th><td>[&quot;entry_zone_mid@63153.785:medium&quot;, &quot;entry_zone_low@63115.87:weak&quot;, &quot;entry_zone_high@63191.7:weak&quot;]<br><span class='source'>出所: 手入力</span></td></tr><tr><th>シグネチャーシグナル <span class="fw-tag" title="FWで方向を支持するシグネチャーシグナルです">FW記載済み · Ch7 signature</span></th><td>未取得<br><span class='source'>出所: 自動算出</span></td></tr><tr><th>反応状態 <span class="fw-tag" title="この自動反応分類は実装拡張であり、FWには定義がありません">FW記載なし</span></th><td>防御中<br><span class='source'>出所: 手入力</span></td></tr><tr><th><code>price_oi_regime</code> <span class="fw-tag" title="取得可能な市場データからFWの補助観測へ変換した値です">FWから推測 · Ch6</span></th><td>{&quot;regime&quot;: &quot;price_flat_oi_flat&quot;, &quot;price_return_1h&quot;: 0.0007645738087345144, &quot;oi_change_1h&quot;: 4.6682917171025906e-05, &quot;interpretation&quot;: &quot;balanced price; no directional commitment read from OI alone&quot;, &quot;usage&quot;: &quot;observation_only&quot;}<br><span class='source'>出所: 最新サイクル（自動取得）</span></td></tr>
+<tr><th>自動補完 <span class="fw-tag" title="手動入力がない場合に市場データから機械補完した値です">FWから推測 · Ch6</span></th><td>未入力値は市場データから推定し、元FW値と区別します。</td></tr></table></section>
+<section><h2>③ 取引中の内容</h2><p class='muted'>現在、保有中のPaperポジションはありません。</p></section>
+<section><h2>④ 過去の取引</h2><div class="grid"><div class="card"><h3>取引回数</h3><strong>0</strong></div><div class="card"><h3>勝率</h3><strong>0.0%</strong></div><div class="card"><h3>累積PnL</h3><strong>0.00 USDT</strong></div><div class="card"><h3>総手数料</h3><strong>0.00 USDT</strong><p>資金調達損益 0.00 USDT</p></div></div>
+<h3>取引単位タイムライン</h3><p class='muted'>完了した取引はまだありません。</p><h3>残高推移</h3><svg class="chart" viewBox="0 0 960 210" role="img" aria-label="残高推移"><line x1="0" y1="180" x2="960" y2="180" stroke="#334155"/><polyline fill="none" stroke="#22c55e" stroke-width="4" points="0.0,180.0 480.0,180.0 960.0,180.0"/><text x="8" y="205" fill="#94a3b8">最小 10,000.00 USDT / 最大 10,000.00 USDT</text></svg></section>
+<section><h2>⑤ 見送り履歴</h2><h3>見送りタイムライン</h3><article class='timeline'><h3>2026-07-10T15:30:00+09:00 · 1回連続</h3><ul><li>反転・継続シグナルが未確認か想定方向と一致していません</li><li>重要な運用入力が不足しています</li><li>現在値が計画したエントリー候補帯へ到達していません</li><li>エントリーの判定は未完了ですが監視を継続できます</li><li>価格分布の文脈の判定は未完了ですが監視を継続できます</li></ul></article><article class='timeline'><h3>2026-07-10T13:45:00+09:00 · 1回連続</h3><ul><li>反転・継続シグナルが未確認か想定方向と一致していません</li><li>重要な運用入力が不足しています</li><li>現在値が計画したエントリー候補帯へ到達していません</li><li>エントリー判定は未完了ですが監視を継続できます</li><li>価格分布の文脈判定は未完了ですが監視を継続できます</li></ul></article><article class='timeline'><h3>2026-07-10T11:30:00+09:00 · 1回連続</h3><ul><li>signature signal is missing or not aligned</li><li>critical operator inputs are still missing</li><li>price has not reached the planned entry zone yet</li><li>entry stage is incomplete but usable for monitoring</li><li>tpo_context stage is incomplete but usable for monitoring</li></ul></article></section>
+<section><h2>用語解説</h2><dl>
+<dt>フレームワーク（FW）</dt><dd>Astro handbookに定義された判断体系です。</dd>
+<dt>マーケットモード（Market Mode）</dt><dd>現在の市場環境をトレンド、レンジなどに分類した状態です。</dd>
+<dt>シグネチャーシグナル（Signature Signal）</dt><dd>Astro判断で重視する代表的な形や値動きの合図です。</dd>
+<dt>コンフルエンス（Confluence）</dt><dd>複数の独立した判断材料が同じ方向を支持する度合いです。</dd>
+<dt>方向判定段階（Direction Stage）</dt><dd>ロング・ショート方向の判断がどこまで固まったかを示します。</dd>
+<dt>実行許可（Execution Permission）</dt><dd>分析を実際のPaper注文候補に進めてよいかを示します。</dd>
+<dt>エントリー候補帯（Entry Zone）</dt><dd>新規Paper注文を検討する価格帯です。</dd>
+<dt>損切り・利確（Stop/Take Profit）</dt><dd>損失を限定する価格と、利益を確定する目標価格です。</dd>
+<dt>マグネット（Magnet）</dt><dd>価格が近づきやすいと判断した上側・下側の注目水準です。</dd>
+<dt>FWから推測</dt><dd>FWの考え方を既存データへ機械的に適用した値です。</dd><dt>FW記載なし</dt><dd>handbookに明示定義がなく、運用補助として表示する値です。</dd><dt>FW逸脱</dt><dd>FWにない、またはFW方針と異なるPaper検証用の仮定です。</dd><dt>資金調達損益（Funding）</dt><dd>無期限先物の資金調達による受取・支払です。</dd><dt>清算価格</dt><dd>証拠金不足により強制決済される概算価格です。実取引所の清算計算とは差があり得ます。</dd></dl></section>
+<footer class="header"><h2>Paper計算の前提（MEXC BTC_USDT perpetual）</h2><p>レバレッジ 20倍 <span class="fw-tag" title="20倍はFW定義ではなくPaper検証用の仮定です">FW記載なし</span> / 1取引の証拠金配分 10% <span class="fw-tag" title="1取引の証拠金配分はPaper検証用のリスク設定です">FW記載なし</span></p>
+<p>Maker手数料率 0.0000% / Taker手数料率 0.0200% <span class="fw-tag" title="MEXC公式仕様を用いるPaper会計上の仮定でありFWには記載がありません">FW記載なし</span> / 維持証拠金率 0.1000% <span class="fw-tag" title="MEXC公式contract detailに基づくPaper清算計算の仮定です">FW記載なし</span></p>
+<p>確認日: 2026-07-10T04:52:34Z / 公式出典: <a href="https://contract.mexc.com/api/v1/contract/detail?symbol=BTC_USDT">MEXC Contract API</a>。</p><p>Binance perpetual価格をMEXC Paper執行の代理データとして使います。レバレッジ20倍はFW定義ではなくPaper検証用の <strong>FW逸脱</strong> です。</p></footer>
+</main>
+<script>
+setInterval(async () => {
+  try {
+    const res = await fetch(window.location.href, {cache: "no-store"});
+    if (!res.ok) return;
+    const doc = new DOMParser().parseFromString(await res.text(), "text/html");
+    const next = doc.querySelector("main");
+    const current = document.querySelector("main");
+    if (next && current && next.innerHTML !== current.innerHTML) {
+      current.innerHTML = next.innerHTML;
+    }
+  } catch (err) { /* 次回の更新で再試行 */ }
+}, 60000);
+</script>
+</body></html>
